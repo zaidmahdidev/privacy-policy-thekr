@@ -1,136 +1,410 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سياسة الخصوصية - تطبيق ذِكر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #0E645C;
+            --primary-light: #168a7f;
+            --accent-color: #C19A6B;
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --bg-color: #F9F9F9;
+            --card-bg: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 40px;
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
             line-height: 1.8;
+            padding-bottom: 50px;
         }
 
-        h1,
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: -40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
         h2 {
-            color: #00695c;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        a {
-            color: #00796b;
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--accent-color);
+            border-radius: 4px;
         }
 
-        .highlight {
-            background-color: #e8f5e8;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
+        ul {
+            list-style: none;
+            padding-right: 15px;
         }
 
-        .new-feature {
-            background-color: #fff3e0;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 10px 0;
-            border-left: 4px solid #ff9800;
+        li {
+            position: relative;
+            margin-bottom: 15px;
+            padding-right: 25px;
         }
-    </style    <h1>سياسة الخصوصية – تطبيق ذِكر</h1>
-    <p><strong>تاريخ آخر تحديث:</strong> 1 مايو 2026</p>
 
-    <p>نحن في تطبيق <strong>ذِكر</strong> نحترم خصوصيتك ونلتزم بحماية بياناتك الشخصية. تم تصميم التطبيق ليقدم تجربة روحانية آمنة مع الحد الأدنى من جمع البيانات الضرورية فقط لتشغيل الميزات المتقدمة.</p>
+        li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: -1em;
+            position: absolute;
+            right: 0;
+            font-size: 1.5rem;
+            top: -5px;
+        }
 
-    <h2>1. المعلومات التي نجمعها</h2>
+        .contact-info {
+            background: #f0f7f6;
+            border-right: 5px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
 
-    <div class="highlight">
-        <p><strong>بيانات الموقع الجغرافي:</strong></p>
-        <ul>
-            <li>نطلب الوصول لموقعك الجغرافي لحساب <strong>مواقيت الصلاة</strong> بدقة وتحديد اتجاه <strong>القبلة</strong>.</li>
-            <li>يتم استخدام هذه البيانات محلياً على جهازك ولا يتم تخزينها أو مشاركتها معنا أو مع أي طرف ثالث.</li>
-        </ul>
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-item span {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .highlight-box {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 25px;
+            }
+        }
+    
+        .nav {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: 700;
+        }
+
+        p + p, p + ul, ul + p {
+            margin-top: 12px;
+        }
+
+        .muted {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        a.link {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            text-align: right;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8eceb;
+            vertical-align: top;
+        }
+
+        th {
+            color: var(--primary-color);
+            background: #f0f7f6;
+        }
+
+        form label {
+            display: block;
+            font-weight: 700;
+            margin: 18px 0 6px;
+        }
+
+        form input[type=email], form select, form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d5dcdb;
+            border-radius: 12px;
+            font: inherit;
+            background: #fff;
+            color: var(--text-primary);
+        }
+
+        form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        form input:focus, form select:focus, form textarea:focus {
+            outline: 2px solid var(--primary-light);
+            border-color: transparent;
+        }
+
+        .check {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-top: 18px;
+        }
+
+        .check input {
+            margin-top: 6px;
+            width: 18px;
+            height: 18px;
+        }
+
+        button.submit {
+            margin-top: 22px;
+            width: 100%;
+            padding: 14px;
+            border: 0;
+            border-radius: 14px;
+            background: var(--primary-color);
+            color: white;
+            font: inherit;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+        }
+
+        button.submit:disabled {
+            opacity: 0.6;
+            cursor: default;
+        }
+
+        .notice {
+            display: none;
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .notice.ok {
+            display: block;
+            background: #e6f4ea;
+            border: 1px solid #a8d5b5;
+        }
+
+        .notice.fail {
+            display: block;
+            background: #fdecea;
+            border: 1px solid #f5b5ae;
+        }
+
+        .hp {
+            position: absolute;
+            left: -9999px;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>سياسة الخصوصية</h1>
+            <p>تطبيق ذِكر – رفيقك في العبادة</p>
+            <p style="margin-top: 15px; font-size: 0.9rem;">تاريخ آخر تحديث: 24 أكتوبر 2026</p>
+            <nav class="nav"><a href="index.html" class="active">سياسة الخصوصية</a><a href="delete-account.html">حذف الحساب</a></nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div style="height: 60px;"></div>
+
+        <div class="card">
+            <p>نحن في تطبيق <strong>ذِكر</strong> نحترم خصوصيتك ونلتزم بحماية بياناتك. التطبيق يعمل كاملاً <strong>دون حساب ودون تسجيل دخول</strong>، وجميع بياناتك تبقى على جهازك. تسجيل الدخول <strong>اختياري</strong> ويُستخدم فقط لحفظ نسخة احتياطية من بياناتك تستعيدها على أي جهاز.</p>
+        </div>
+
+        <div class="card">
+            <h2>1. المعلومات التي نجمعها</h2>
+            <p><strong>أ. بدون تسجيل دخول</strong></p>
+            <ul>
+                <li><strong>الموقع الجغرافي:</strong> نطلب إذن الموقع لحساب مواقيت الصلاة وتحديد القبلة. يُحفظ آخر موقع معروف على جهازك فقط، ولا يخرج منه ما لم تسجّل الدخول (انظر الفقرة التالية).</li>
+                <li><strong>بيانات الاستخدام داخل التطبيق</strong> (الأذكار الخاصة بك، الإشارات المرجعية، سجل العبادات، المسبحة، المفضلة، الإعدادات): تُخزَّن على جهازك فقط.</li>
+            </ul>
+            <p><strong>ب. عند تسجيل الدخول بحساب Google (اختياري)</strong></p>
+            <ul>
+                <li><strong>بيانات الحساب:</strong> الاسم والبريد الإلكتروني وصورة الحساب ومعرّف المستخدم، وهي التي تقدمها Google لتأكيد هويتك.</li>
+                <li><strong>نسخة احتياطية من بياناتك:</strong> إعداداتك، والأذكار التي أضفتها، وإشارات القرآن وآخر صفحة قرأتها، وسجل العبادات والنقاط، وعدّادات المسبحة، ومفضلة الإذاعة، وقوائم التجهيز للعمرة والحج، وتفضيلات التذكير.</li>
+                <li><strong>الموقع التقريبي:</strong> إذا كان الموقع محفوظاً على جهازك، تُحفظ مع حسابك إحداثياته مقرَّبة (نحو 100 متر) واسم المدينة والحي، لتعمل مواقيت الصلاة فور استعادة بياناتك على جهاز جديد. ولا نطلب إذن الموقع من أجل هذا الغرض.</li>
+                <li><strong>معلومات تقنية:</strong> نظام الجهاز (أندرويد/iOS)، ورقم إصدار التطبيق، ووقت آخر نسخة احتياطية.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>2. الخدمات التي نستخدمها</h2>
+            <p>نعتمد على خدمات Google لتشغيل التطبيق، وتخضع بياناتك فيها لسياسات Google:</p>
+            <ul>
+                <li><strong>Firebase Authentication:</strong> لتسجيل الدخول بحساب Google.</li>
+                <li><strong>Cloud Firestore:</strong> لحفظ النسخة الاحتياطية. تسمح قواعد الأمان لكل مستخدم بالوصول إلى بياناته وحدها.</li>
+                <li><strong>الإشعارات (FCM):</strong> لإرسال تذكيرات الأذكار والورد.</li>
+                <li><strong>التحليلات (Analytics) وسجلات الأخطاء (Crashlytics):</strong> لفهم استخدام التطبيق وإصلاح الأعطال.</li>
+                <li><strong>البث المباشر (YouTube):</strong> يُعرض عبر مشغّل YouTube ويخضع لسياسة Google وYouTube.</li>
+                <li><strong>الإذاعة:</strong> يتصل التطبيق بخوادم بث خارجية لتشغيل المحطات، فتصلها بالضرورة عناوين الاتصال (IP) كأي بث إنترنت.</li>
+                <li><strong>اسم المدينة والحي:</strong> يُحوَّل موقعك إلى اسم عبر خدمة تحديد العناوين الموجودة في نظام جهازك (قد تتصل بخوادم Google أو Apple).</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>3. أذونات الجهاز</h2>
+            <ul>
+                <li><strong>الموقع:</strong> لحساب مواقيت الصلاة والقبلة.</li>
+                <li><strong>الإشعارات والتنبيهات الدقيقة:</strong> لتذكيرات الأذكار والأذان في وقتها.</li>
+                <li><strong>الإنترنت:</strong> للبث والإذاعة والنسخ الاحتياطي وتحديث الإعدادات.</li>
+                <li><strong>التشغيل في الخلفية (خدمة وسائط):</strong> ليستمر صوت الإذاعة وتلاوة القرآن عند قفل الشاشة أو الخروج من التطبيق، مع إشعار للتحكم فيه.</li>
+                <li><strong>التخزين/الوسائط:</strong> عند رغبتك في حفظ أو مشاركة بطاقات الأذكار والآيات كصور فقط.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>4. كيف نستخدم بياناتك ومع من نشاركها</h2>
+            <ul>
+                <li>نستخدم بياناتك فقط لتشغيل ميزات التطبيق وحفظ نسختك الاحتياطية وتحسين الأداء.</li>
+                <li><strong>لا نبيع بياناتك ولا نؤجرها</strong> ولا نشاركها مع جهات إعلانية.</li>
+                <li>لا يطّلع أي مستخدم على بيانات مستخدم آخر. ويقتصر الوصول الإداري إلى بيانات الحسابات على مطوّر التطبيق لأغراض الدعم والصيانة.</li>
+                <li>تُنقل بياناتك بين جهازك وخوادم Google عبر اتصال مشفّر.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>5. مدة الاحتفاظ وحذف البيانات</h2>
+            <ul>
+                <li>تبقى النسخة الاحتياطية ما دام حسابك موجوداً، وتُحذف عند حذفه.</li>
+                <li><strong>حذف الحساب من التطبيق:</strong> الإعدادات ثم بطاقة الحساب ثم «حسابي» ثم «حذف حسابي وبياناتي». يُحذف حسابك والنسخة السحابية وملفك الشخصي فوراً.</li>
+                <li><strong>حذف الحساب من الويب:</strong> إن لم تعد تستطيع فتح التطبيق، استخدم <a class="link" href="delete-account.html">صفحة طلب حذف الحساب</a>.</li>
+                <li>بيانات جهازك المحلية لا تتأثر بحذف الحساب، وتُمسح بحذف التطبيق أو مسح بياناته.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>6. حقوقك</h2>
+            <ul>
+                <li>استخدام التطبيق كاملاً بدون حساب.</li>
+                <li>التحكم في الأذونات من إعدادات هاتفك في أي وقت.</li>
+                <li>إيقاف النسخ الاحتياطي التلقائي، أو تسجيل الخروج، أو حذف حسابك وبياناتك.</li>
+                <li>طلب معرفة البيانات المحفوظة عنك أو تصحيحها بمراسلتنا.</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>7. التواصل معنا</h2>
+            <p>إذا كان لديك أي استفسار بخصوص سياسة الخصوصية، يسعدنا تواصلك معنا:</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📧 البريد الإلكتروني:</span> zaidmhdidev@gmail.com
+                </div>
+                <div class="contact-item">
+                    <span>📞 رقم الدعم (واتساب):</span> 774814210
+                </div>
+            </div>
+            <p class="muted">قد نحدّث هذه السياسة عند إضافة ميزات جديدة، ويظهر تاريخ آخر تحديث أعلى الصفحة.</p>
+        </div>
+
+        <footer>
+            <p>© 2026 تطبيق ذِكر - جميع الحقوق محفوظة</p>
+        </footer>
     </div>
-
-    <div class="new-feature">
-        <p><strong>الخدمات السحابية والتحليلات (Firebase):</strong></p>
-        <ul>
-            <li><strong>الإشعارات:</strong> نستخدم نظام إشعارات السحابة لإرسال التذكيرات والأذكار الهامة. يتطلب ذلك استخدام معرف تقني مجهول للجهاز (FCM Token).</li>
-            <li><strong>تحسين الأداء:</strong> نستخدم أدوات (Firebase Analytics & Crashlytics) لجمع معلومات تقنية مجهولة المصدر حول أداء التطبيق والأعطال البرمجية لنتمكن من تحسين الخدمة. لا ترتبط هذه البيانات بهويتك الشخصية بأي حال.</li>
-        </ul>
-    </div>
-
-    <h2>2. استخدام أذونات الجهاز</h2>
-    <ul>
-        <li><strong>إذن الموقع:</strong> يُستخدم لحساب مواقيت الصلاة والقبلة.</li>
-        <li><strong>إذن الإشعارات:</strong> لإرسال تذكيرات الأذكار والتنبيهات السحابية.</li>
-        <li><strong>البوصلة:</strong> لتحديد اتجاه القبلة بدقة.</li>
-        <li><strong>الإنترنت:</strong> يُستخدم لتحميل البث المباشر، استقبال الإشعارات، وإرسال تقارير الأعطال البرمجية.</li>
-        <li><strong>الاهتزاز:</strong> يُستخدم للتفاعل مع المسبحة والأذكار.</li>
-    </ul>
-
-    <h2>3. ميزة البث المباشر</h2>
-    <p>يتيح التطبيق ميزة مشاهدة البث المباشر لقنوات الحرمين الشريفين. هذه الميزة تتطلب اتصالاً بالإنترنت وتستخدم روابط خارجية لمشغلات الفيديو، ولا يتم جمع أي بيانات حول عادات المشاهدة الخاصة بك.</p>
-
-    <h2>4. تخزين البيانات</h2>
-    <ul>
-        <li>بياناتك الشخصية (مثل تقدم القراءة، الأذكار المفضلة، وإعدادات الثيمات) تُحفظ محلياً على جهازك فقط.</li>
-        <li>لا نطلب منك إنشاء حساب أو تقديم أي بيانات تعريفية (مثل الاسم أو الإيميل) لاستخدام التطبيق.</li>
-    </ul>
-
-    <h2>5. ميزة المشاركة (البطاقات)</h2>
-    <ul>
-        <li>عند مشاركة الأذكار كصور، يتم توليد الصور داخل جهازك.</li>
-        <li>نستخدم نظام المشاركة الخاص بأندرويد، مما يضمن أننا لا نطلع على جهات اتصالك أو تطبيقاتك الأخرى.</li>
-    </ul>
-
-    <h2>6. حقوق المستخدم</h2>
-    <ul>
-        <li>يمكنك إلغاء أذونات الموقع أو الإشعارات في أي وقت من إعدادات النظام.</li>
-        <li>حذف التطبيق يؤدي لمسح جميع البيانات المخزنة محلياً فوراً.</li>
-    </ul>
-
-    <h2>7. تواصل معنا</h2>
-    <p>إذا كانت لديك أي استفسارات حول سياسة الخصوصية، يسعدنا تواصلك معنا:<br>
-        📧 البريد الإلكتروني: zaidmhdidev@gmail.com<br>
-        📞 رقم الدعم: 774814210</p>
-
-    <hr>
-    <p style="text-align:center;">© 2026 تطبيق ذِكر - جميع الحقوق محفوظة</p>
 </body>
-</html>
-�إشعارات من داخل التطبيق.</li>
-        </ul>
-    </div>
-
-    <h2>6. ميزة المشاركة (النص والبطاقات)</h2>
-    <div class="new-feature">
-        <p>عند استخدام ميزة المشاركة:</p>
-        <ul>
-            <li>يمكنك مشاركة المحتوى كنص أو كـ <strong>بطاقة مصممة (صورة)</strong>.</li>
-            <li>يتم توليد صورة البطاقة برمجياً داخل جهازك فقط.</li>
-            <li>لا يتم تخزين هذه الصور في معرض الصور الدائم لديك إلا إذا قمت أنت بذلك يدوياً.</li>
-            <li>التطبيق يقوم بفتح قائمة المشاركة الخاصة بالنظام لتختار التطبيق الذي تود الإرسال عبره.</li>
-        </ul>
-    </div>
-
-    <h2>7. التوافق والأمان</h2>
-    <p>نحن نلتزم بأحدث معايير الأمان لنظام Android (مثل R8/Proguard) لضمان أن التطبيق يعمل بكفاءة وبدون ثغرات أمنية، مع
-        الحفاظ على صغر حجم التطبيق وحماية أكواده.</p>
-
-    <h2>8. حقوق المستخدم</h2>
-    <ul>
-        <li>لك الحق الكامل في مسح جميع بياناتك ببساطة عن طريق حذف التطبيق من جهازك.</li>
-        <li>يمكنك إلغاء أي أذونات من إعدادات النظام في أي وقت.</li>
-    </ul>
-
-    <h2>9. تواصل معنا</h2>
-    <p>إذا كانت لديك أي استفسارات حول سياسة الخصوصية، يسعدنا تواصلك معنا:<br>
-        📧 البريد الإلكتروني: zaidmhdidev@gmail.com<br>
-        📞 رقم الدعم: 774814210</p>
-
-    <hr>
-    <p style="text-align:center;">© 2026 تطبيق ذِكر - جميع الحقوق محفوظة</p>
-</body>
-
 </html>

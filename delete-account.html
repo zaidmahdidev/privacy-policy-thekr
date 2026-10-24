@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حذف الحساب - تطبيق ذِكر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0E645C;
+            --primary-light: #168a7f;
+            --accent-color: #C19A6B;
+            --text-primary: #2D3436;
+            --text-secondary: #636E72;
+            --bg-color: #F9F9F9;
+            --card-bg: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.8;
+            padding-bottom: 50px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: -40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        ul {
+            list-style: none;
+            padding-right: 15px;
+        }
+
+        li {
+            position: relative;
+            margin-bottom: 15px;
+            padding-right: 25px;
+        }
+
+        li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-right: -1em;
+            position: absolute;
+            right: 0;
+            font-size: 1.5rem;
+            top: -5px;
+        }
+
+        .contact-info {
+            background: #f0f7f6;
+            border-right: 5px solid var(--primary-color);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .contact-item span {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .highlight-box {
+            background: #fff8e1;
+            border: 1px solid #ffe082;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 25px;
+            }
+        }
+    
+        .nav {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .nav a.active {
+            background: rgba(255, 255, 255, 0.2);
+            font-weight: 700;
+        }
+
+        p + p, p + ul, ul + p {
+            margin-top: 12px;
+        }
+
+        .muted {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        a.link {
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            text-align: right;
+            padding: 10px 12px;
+            border-bottom: 1px solid #e8eceb;
+            vertical-align: top;
+        }
+
+        th {
+            color: var(--primary-color);
+            background: #f0f7f6;
+        }
+
+        form label {
+            display: block;
+            font-weight: 700;
+            margin: 18px 0 6px;
+        }
+
+        form input[type=email], form select, form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #d5dcdb;
+            border-radius: 12px;
+            font: inherit;
+            background: #fff;
+            color: var(--text-primary);
+        }
+
+        form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        form input:focus, form select:focus, form textarea:focus {
+            outline: 2px solid var(--primary-light);
+            border-color: transparent;
+        }
+
+        .check {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            margin-top: 18px;
+        }
+
+        .check input {
+            margin-top: 6px;
+            width: 18px;
+            height: 18px;
+        }
+
+        button.submit {
+            margin-top: 22px;
+            width: 100%;
+            padding: 14px;
+            border: 0;
+            border-radius: 14px;
+            background: var(--primary-color);
+            color: white;
+            font: inherit;
+            font-weight: 700;
+            font-size: 1.05rem;
+            cursor: pointer;
+        }
+
+        button.submit:disabled {
+            opacity: 0.6;
+            cursor: default;
+        }
+
+        .notice {
+            display: none;
+            margin-top: 18px;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        .notice.ok {
+            display: block;
+            background: #e6f4ea;
+            border: 1px solid #a8d5b5;
+        }
+
+        .notice.fail {
+            display: block;
+            background: #fdecea;
+            border: 1px solid #f5b5ae;
+        }
+
+        .hp {
+            position: absolute;
+            left: -9999px;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>حذف الحساب</h1>
+            <p>تطبيق ذِكر – رفيقك في العبادة</p>
+            <p style="margin-top: 15px; font-size: 0.9rem;">اطلب حذف حسابك وبياناتك</p>
+            <nav class="nav"><a href="index.html">سياسة الخصوصية</a><a href="delete-account.html" class="active">حذف الحساب</a></nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div style="height: 60px;"></div>
+
+        <div class="card">
+            <p>يمكنك حذف حسابك وبياناتك المحفوظة في السحابة في أي وقت، بإحدى طريقتين.</p>
+        </div>
+
+        <div class="card">
+            <h2>الطريقة الأولى: من داخل التطبيق (فوراً)</h2>
+            <ul>
+                <li>افتح <strong>الإعدادات</strong> في تطبيق ذِكر.</li>
+                <li>اضغط على بطاقة حسابك في أعلى الشاشة لتفتح نافذة <strong>«حسابي»</strong>.</li>
+                <li>اختر <strong>«حذف حسابي وبياناتي»</strong> ثم أكّد.</li>
+            </ul>
+            <p class="muted">قد يطلب منك Google اختيار حسابك مرة أخرى لتأكيد الهوية.</p>
+        </div>
+
+        <div class="card">
+            <h2>الطريقة الثانية: طلب حذف عبر هذه الصفحة</h2>
+            <p>إن لم تعد تستطيع فتح التطبيق (حذفته أو فقدت هاتفك)، املأ النموذج التالي بالبريد الإلكتروني الذي سجّلت به الدخول.</p>
+
+            <form id="deleteForm" novalidate>
+                <div class="hp" aria-hidden="true">
+                    <label>لا تملأ هذا الحقل <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+                </div>
+
+                <label for="email">البريد الإلكتروني لحسابك (Google)</label>
+                <input type="email" id="email" name="email" required autocomplete="email" placeholder="example@gmail.com" dir="ltr">
+
+                <label for="reason">سبب طلب الحذف</label>
+                <select id="reason" name="reason" required>
+                    <option value="">اختر السبب</option>
+                    <option>لا أستخدم التطبيق بعد الآن</option>
+                    <option>مخاوف تتعلق بالخصوصية</option>
+                    <option>أريد البدء بحساب جديد</option>
+                    <option>مشكلة في التطبيق</option>
+                    <option>سبب آخر</option>
+                </select>
+
+                <label for="details">تفاصيل إضافية (اختياري)</label>
+                <textarea id="details" name="details" maxlength="1000"></textarea>
+
+                <div class="check">
+                    <input type="checkbox" id="confirm" required>
+                    <label for="confirm" style="margin:0; font-weight:500;">أطلب حذف حسابي وجميع بياناتي المرتبطة به، وأفهم أن هذا لا يمكن التراجع عنه.</label>
+                </div>
+
+                <button class="submit" type="submit" id="submitBtn">إرسال طلب الحذف</button>
+                <div class="notice" id="notice" role="status"></div>
+            </form>
+        </div>
+
+        <div class="card">
+            <h2>ماذا يُحذف؟ وماذا يبقى؟</h2>
+            <table>
+                <tr><th>يُحذف نهائياً</th><th>لا يتأثر</th></tr>
+                <tr>
+                    <td>حسابك في Firebase (الاسم والبريد والصورة ومعرّف المستخدم)</td>
+                    <td>البيانات المحفوظة على جهازك (تُمسح بحذف التطبيق أو بياناته)</td>
+                </tr>
+                <tr>
+                    <td>النسخة الاحتياطية من الإعدادات والأذكار والإشارات وسجل العبادات والمسبحة والمفضلة</td>
+                    <td>حساب Google نفسه، فهو لا يتأثر</td>
+                </tr>
+                <tr>
+                    <td>الملف الشخصي المحفوظ (الموقع التقريبي والمدينة والحي، ونظام الجهاز وإصدار التطبيق)</td>
+                    <td>سجلات الأعطال والتحليلات المجمّعة، وهي غير مرتبطة باسمك، وتحذفها Google وفق سياساتها</td>
+                </tr>
+            </table>
+            <p class="muted">نعالج الطلب ونرسل لك تأكيداً على بريدك خلال 30 يوماً كحد أقصى. وللتحقق من هويتك قد نراسلك على البريد الذي أدخلته قبل التنفيذ.</p>
+        </div>
+
+        <div class="card">
+            <p class="muted">لمزيد من التفاصيل عمّا نجمعه وكيف نستخدمه، اقرأ <a class="link" href="index.html">سياسة الخصوصية</a>.
+            يُرسل هذا النموذج عبر خدمة FormSubmit إلى بريد مطوّر التطبيق، ولا يُستخدم ما تكتبه فيه إلا لمعالجة طلبك.</p>
+        </div>
+
+        <footer>
+            <p>© 2026 تطبيق ذِكر - جميع الحقوق محفوظة</p>
+        </footer>
+    </div>
+    <script>
+        const form = document.getElementById('deleteForm');
+        const notice = document.getElementById('notice');
+        const btn = document.getElementById('submitBtn');
+        const ENDPOINT = 'https://formsubmit.co/ajax/zaidmhdi33@gmail.com';
+
+        function show(kind, text) {
+            notice.className = 'notice ' + kind;
+            notice.textContent = text;
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const reason = document.getElementById('reason').value;
+            const details = document.getElementById('details').value.trim();
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                return show('fail', 'اكتب بريداً إلكترونياً صحيحاً.');
+            }
+            if (!reason) return show('fail', 'اختر سبب الحذف.');
+            if (!document.getElementById('confirm').checked) {
+                return show('fail', 'يجب تأكيد طلب الحذف أولاً.');
+            }
+            if (form.elements['_honey'].value) return; // a bot filled the hidden field
+
+            btn.disabled = true;
+            btn.textContent = 'جارٍ الإرسال…';
+            try {
+                const res = await fetch(ENDPOINT, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        _subject: 'طلب حذف حساب - تطبيق ذِكر',
+                        _template: 'table',
+                        _captcha: 'false',
+                        email: email,
+                        reason: reason,
+                        details: details || '(لا يوجد)',
+                        page: location.href
+                    })
+                });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok || data.success === 'false') throw new Error('failed');
+                form.reset();
+                show('ok', 'تم إرسال طلبك. سنراسلك على بريدك لتأكيد التنفيذ.');
+            } catch (err) {
+                show('fail', 'تعذّر إرسال الطلب. حاول لاحقاً، أو راسلنا على zaidmhdidev@gmail.com من البريد نفسه.');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'إرسال طلب الحذف';
+            }
+        });
+    </script>
+</body>
+</html>
